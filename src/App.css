@@ -1,0 +1,68 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Jaro:opsz@6..72&family=Protest+Guerrilla&display=swap');
+
+.protest-guerrilla-regular {
+  font-family: "Protest Guerrilla", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.weather-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0; 
+}
+
+.input-container {
+  text-align: center;
+  width: 40vw;
+  position: relative;
+}
+
+.input-container input {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 8px; 
+  width:50%;
+  padding-left: .5rem;
+  padding-bottom: .5rem;
+  height: 1rem;
+  
+  
+
+  outline: none; 
+}
+
+.input-container input:focus {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.wrapper-container {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px; 
+  
+}
+
+.input-container button{
+  all: unset;
+  height: 1rem;
+}
+
+.input-container span {
+  font-size: 25px;
+  font-weight: 600;
+  color: #000;
+  top: 2;
+}
+
+.input-row{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
