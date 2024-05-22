@@ -11,7 +11,7 @@ export const WeatherDetails = () => {
   const [humidity, setHumidity] = useState('0');
   const [loading, setLoading] = useState(false);
   const [cityNotFound, setCityNotFound] = useState(false);
-  let api_key = "c66198ee6c4217fa48e59ea3acdec44f";
+  let api_key = "Paste_your_api_key_here!";
 
 
   const search = async () => {
