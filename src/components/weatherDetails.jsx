@@ -15,6 +15,9 @@ export const WeatherDetails = () => {
   const [humidity, setHumidity] = useState('0');
   const [loading, setLoading] = useState(false);
   const [cityNotFound, setCityNotFound] = useState(false);
+  const [wind, setWind] = useState('');
+
+
   // let api_key = "Paste_your_api_key_here!";
   let api_key = "c66198ee6c4217fa48e59ea3acdec44f";
 
@@ -24,6 +27,7 @@ export const WeatherDetails = () => {
 
 
   const search = async () => {
+    setCityNotFound(false);
   handleCity();
   setInputVal('');
     setLoading(true);
@@ -46,6 +50,11 @@ export const WeatherDetails = () => {
   setLat(data.coord.lat);
   setHumidity(data.main.humidity);
   setWeather(data.weather[0].main);
+  setWind(data.main.wind);
+
+  const tempKelvin = data.main.temp;
+  const tempCelcius = tempKelvin - 273.15;
+  setTemp(tempCelcius.toFixed(2));
   setIcon(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
 
   }
@@ -78,7 +87,7 @@ export const WeatherDetails = () => {
     <div className="weather-container">
       <div className="wrapper-container">
         <div className="input-container">
-          <h3>Enter city name:</h3>
+          <h3 className='heading'>Enter city name:</h3>
           <div className="input-row">
             <input
               type="text"
@@ -94,8 +103,8 @@ export const WeatherDetails = () => {
         </div>
 
 
-        <div className="data-container">
-        {cityNotFound && <p>City not found. Please try again.</p>}
+        <div className="data-container gugi-regular">
+        {cityNotFound ? (<p>City not found. Please try again.</p>) : (
           
             <Process
               cityname={cityname}
@@ -105,8 +114,9 @@ export const WeatherDetails = () => {
               lat={lat}
               lon={lon}
               humidity={humidity}
+              wind={wind}
             />
-          {/* )} */}
+          )}
         </div>
       </div>
     </div>

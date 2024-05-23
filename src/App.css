@@ -1,7 +1,14 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Rubik+Wet+Paint&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Jaro:opsz@6..72&family=Rubik+Wet+Paint&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 .protest-guerrilla-regular {
   font-family: "Protest Guerrilla", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gugi-regular {
+  font-family: "Gugi", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -13,7 +20,9 @@
   align-items: center;
   height: 100vh;
   font-size: 1.4rem;
-  background: linear-gradient(135deg, #4db07b, #088a79cc);
+  /* background: linear-gradient(135deg, #3894b3, #60e9d6cc); */
+  background: linear-gradient(135deg, #f5d561, #fcf681cc); 
+  /* background: #f5d561; */
 }
 
 .input-container {
@@ -86,8 +95,15 @@
   align-items: center;
   padding: .5rem;
   margin: 0.5rem;
+  color: #40CEE3;
 }
 
+.heading{
+  color: #eead09;
+  font-size: 1.9rem;
+  font-weight: bold;
+  
+}
 .city-name{
   font-family: "Rubik Wet Paint", system-ui;
   font-weight: 400;
@@ -95,3 +111,21 @@
   font-size: 2rem;
   color: #eead09;
 }
+
+.cords{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 3rem;
+}
+
+.coord-col div{
+  padding: 1rem;
+}
+
+/* .img-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+} */
