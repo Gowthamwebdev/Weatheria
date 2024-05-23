@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import clearIcon from './clear.png';
+
+// export const clearIcon = require('./clear.png');
 
 export const WeatherDetails = () => {
-  const [inputVal, setInputVal] = useState('');
+  const [inputVal, setInputVal] = useState('chennai');
   const [cityname, setCityName] = useState('');
   const [lat, setLat] = useState('latitude');
-  const [long, setLong] = useState('longitude');
-  const [weather, setWeather] = useState('');
+  const [log, setLong] = useState('longitude');
+  const [weather, setWeather] = useState(clearIcon);
   const [icon, setIcon] = useState('snow.svg');
   const [temp, setTemp] = useState('0');
   const [humidity, setHumidity] = useState('0');
   const [loading, setLoading] = useState(false);
   const [cityNotFound, setCityNotFound] = useState(false);
-  let api_key = "Paste_your_api_key_here!";
+  // let api_key = "Paste_your_api_key_here!";
+  let api_key = "c66198ee6c4217fa48e59ea3acdec44f";
+
+  // clear.png
+
+
 
 
   const search = async () => {
@@ -37,7 +45,7 @@ export const WeatherDetails = () => {
   setLat(data.coord.lat);
   setTemp(data.main.temp);
   setHumidity(data.main.humidity);
-  setIcon(data.weather.main);
+  // setIcon(data.weather.main);
 
   }
   catch(error){
@@ -51,7 +59,7 @@ export const WeatherDetails = () => {
   function handleCity() {
     setCityName(inputVal);
     console.log(cityname);
-    setWeather('Sunny');
+    // setWeather('Sunny');
   }
 
   const handleKeyPress = (event) => {
@@ -59,6 +67,10 @@ export const WeatherDetails = () => {
       search();
     }
   };
+
+  useEffect (function () {
+    search();
+  },[]);
 
   return (
     <div className="weather-container">
@@ -82,11 +94,11 @@ export const WeatherDetails = () => {
 
         <div className="data-container">
 
-          {cityname && <p>City Name: {cityname}</p>}
+          {cityname && <p className='city-name'> {cityname}</p>}
           
             
               <p>{weather}</p>
-              <img src={icon} alt="Sunny" />
+              {icon && <img src={icon} alt="snow" />}
               
             <div className="temp">
               {temp}*c
@@ -94,7 +106,7 @@ export const WeatherDetails = () => {
 
 
             <div className="lat">{lat}</div>
-            <div className="long">{long}</div>
+            <div className="long">{log}</div>
             <div className="humidity">{humidity}</div>
 
           
