@@ -13,7 +13,7 @@
   align-items: center;
   height: 100vh;
   font-size: 1.4rem;
-  background-color: #f0f0f0; 
+  background: linear-gradient(135deg, #4db07b, #088a79cc);
 }
 
 .input-container {
@@ -70,7 +70,7 @@
   justify-content: center;
 }
 
-img{
+.weather-icon{
   height: 30%;
   width: 30%;
   text-align: center;

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import clearIcon from './clear.png';
-
+import Process from './process';
+// import clearIcon from './clear.png';
+// 
 // export const clearIcon = require('./clear.png');
 
 export const WeatherDetails = () => {
-  const [inputVal, setInputVal] = useState('chennai');
+  const [inputVal, setInputVal] = useState('Erode');
   const [cityname, setCityName] = useState('');
   const [lat, setLat] = useState('latitude');
-  const [log, setLong] = useState('longitude');
-  const [weather, setWeather] = useState(clearIcon);
+  const [lon, setLong] = useState('longitude');
+  const [weather, setWeather] = useState();
   const [icon, setIcon] = useState('snow.svg');
   const [temp, setTemp] = useState('0');
   const [humidity, setHumidity] = useState('0');
@@ -24,7 +25,7 @@ export const WeatherDetails = () => {
 
   const search = async () => {
   handleCity();
-
+  setInputVal('');
     setLoading(true);
 
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${api_key}`
@@ -41,11 +42,11 @@ export const WeatherDetails = () => {
   }
 
   setCityName(data.name);
-  setLong(data.coord.long);
+  setLong(data.coord.lon);
   setLat(data.coord.lat);
-  setTemp(data.main.temp);
   setHumidity(data.main.humidity);
-  // setIcon(data.weather.main);
+  setWeather(data.weather[0].main);
+  setIcon(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
 
   }
   catch(error){
@@ -53,12 +54,13 @@ export const WeatherDetails = () => {
   }
   finally{
     setLoading(false);
+    inputVal == "";
   }
 }
-
   function handleCity() {
     setCityName(inputVal);
     console.log(cityname);
+    
     // setWeather('Sunny');
   }
 
@@ -93,23 +95,18 @@ export const WeatherDetails = () => {
 
 
         <div className="data-container">
-
-          {cityname && <p className='city-name'> {cityname}</p>}
+        {cityNotFound && <p>City not found. Please try again.</p>}
           
-            
-              <p>{weather}</p>
-              {icon && <img src={icon} alt="snow" />}
-              
-            <div className="temp">
-              {temp}*c
-            </div>
-
-
-            <div className="lat">{lat}</div>
-            <div className="long">{log}</div>
-            <div className="humidity">{humidity}</div>
-
-          
+            <Process
+              cityname={cityname}
+              weather={weather}
+              icon={icon}
+              temp={temp}
+              lat={lat}
+              lon={lon}
+              humidity={humidity}
+            />
+          {/* )} */}
         </div>
       </div>
     </div>
