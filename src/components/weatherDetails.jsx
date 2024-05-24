@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Process from './process';
-// import clearIcon from './clear.png';
-// 
-// export const clearIcon = require('./clear.png');
+import { WEATHERICONDATA } from '../utils/data';
 
 export const WeatherDetails = () => {
   const [inputVal, setInputVal] = useState('Erode');
@@ -16,7 +14,7 @@ export const WeatherDetails = () => {
   const [loading, setLoading] = useState(false);
   const [cityNotFound, setCityNotFound] = useState(false);
   const [wind, setWind] = useState('');
-
+  const clearIcon = "./clear.png";
 
   // let api_key = "Paste_your_api_key_here!";
   let api_key = "c66198ee6c4217fa48e59ea3acdec44f";
@@ -50,13 +48,14 @@ export const WeatherDetails = () => {
   setLat(data.coord.lat);
   setHumidity(data.main.humidity);
   setWeather(data.weather[0].main);
-  setWind(data.main.wind);
+  setWind(data.wind.speed);
 
   const tempKelvin = data.main.temp;
   const tempCelcius = tempKelvin - 273.15;
   setTemp(tempCelcius.toFixed(2));
-  setIcon(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
-
+  const weatherIcon = data.weather[0].icon;
+  setIcon(WEATHERICONDATA[weatherIcon] || clearIcon);
+  setCityNotFound(false);
   }
   catch(error){
     console.error("An error occured: ",error.message);
