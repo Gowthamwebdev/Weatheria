@@ -5,6 +5,7 @@ import { WEATHERICONDATA } from '../utils/data';
 export const WeatherDetails = () => {
   const [inputVal, setInputVal] = useState('Erode');
   const [cityname, setCityName] = useState('');
+  const [country, setCountry] = useState('');
   const [lat, setLat] = useState('latitude');
   const [lon, setLong] = useState('longitude');
   const [weather, setWeather] = useState();
@@ -16,8 +17,8 @@ export const WeatherDetails = () => {
   const [wind, setWind] = useState('');
   const clearIcon = "./clear.png";
 
-  // let api_key = "Paste_your_api_key_here!";
-  let api_key = "c66198ee6c4217fa48e59ea3acdec44f";
+  let api_key = "Paste_your_api_key_here!";
+  
 
   // clear.png
 
@@ -49,6 +50,7 @@ export const WeatherDetails = () => {
   setHumidity(data.main.humidity);
   setWeather(data.weather[0].main);
   setWind(data.wind.speed);
+  setCountry(data.sys.country);
 
   const tempKelvin = data.main.temp;
   const tempCelcius = tempKelvin - 273.15;
@@ -107,6 +109,7 @@ export const WeatherDetails = () => {
           
             <Process
               cityname={cityname}
+              country={country}
               weather={weather}
               icon={icon}
               temp={temp}

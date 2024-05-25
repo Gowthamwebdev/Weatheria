@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Process = ({ cityname, weather, icon, temp, lat, lon, humidity,wind }) => {
+const Process = ({ cityname, weather, icon, temp, lat, lon, humidity,wind,country }) => {
   return (
     <>
     <div className='data-container'>
       {cityname && <p className="city-name">{cityname}</p>}
+      <p className='country'>' {country} '</p>
       <div className="temp">{temp}°C</div>
       {icon && <img className='weather-icon' src={icon} alt={weather} />}
 
